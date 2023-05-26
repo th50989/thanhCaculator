@@ -70,6 +70,19 @@ class _SimpleCalculatorState extends State<SimpleCalculator> {
     );
   }
 
+  Widget resultPlace(String displayText) {
+    return Container(
+      decoration: BoxDecoration(
+          border: Border.all(color: Colors.white),
+          borderRadius: BorderRadius.all(Radius.circular(5.0))),
+      padding: EdgeInsets.all(16),
+      child: Text(
+        displayText,
+        style: TextStyle(fontSize: 32, color: Colors.white),
+      ),
+    );
+  }
+
   String evalExpression(String expression) {
     Parser parser = Parser();
     Expression exp = parser.parse(expression);
@@ -106,16 +119,7 @@ class _SimpleCalculatorState extends State<SimpleCalculator> {
       appBar: AppBar(title: Center(child: Text('Calculator'))),
       body: Container(
         child: Column(mainAxisAlignment: MainAxisAlignment.end, children: [
-          Container(
-            decoration: BoxDecoration(
-                border: Border.all(color: Colors.white),
-                borderRadius: BorderRadius.all(Radius.circular(5.0))),
-            padding: EdgeInsets.all(16),
-            child: Text(
-              displayText,
-              style: TextStyle(fontSize: 32, color: Colors.white),
-            ),
-          ),
+          resultPlace(displayText),
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Row(
@@ -188,7 +192,9 @@ class _SimpleCalculatorState extends State<SimpleCalculator> {
                             '0',
                             style: TextStyle(fontSize: 24, color: Colors.white),
                           ),
-                          onPressed: () {},
+                          onPressed: () {
+                            buttonPressed('0');
+                          },
                         ),
                       )),
                 ),
