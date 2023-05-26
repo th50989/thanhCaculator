@@ -176,7 +176,7 @@ class _SimpleCalculatorState extends State<SimpleCalculator> {
                 Container(
                   child: SizedBox(
                       height: 70,
-                      width: 140,
+                      width: 165,
                       child: Container(
                         constraints: BoxConstraints.expand(),
                         child: TextButton(
