@@ -91,6 +91,16 @@ class _SimpleCalculatorState extends State<SimpleCalculator> {
     return result.toString();
   }
 
+  void delayClear() async {
+    // Delaying for 2 seconds
+    await Future.delayed(Duration(seconds: 1));
+
+    // Clearing the displayText
+    setState(() {
+      displayText = '';
+    });
+  }
+
   String displayText = '';
   buttonPressed(String buttonText) {
     setState(() {
@@ -103,6 +113,7 @@ class _SimpleCalculatorState extends State<SimpleCalculator> {
         } catch (e) {
           // Handle any errors during evaluation
           displayText = 'Error';
+          delayClear();
         }
       } else if (buttonText == '+/') {
         displayText = 'Not Function Yet';
